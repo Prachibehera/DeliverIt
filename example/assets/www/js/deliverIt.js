@@ -45,7 +45,7 @@ function SignUpAgent()
 {
 	var flag = 0;
 	var firstName = document.getElementById( "txt-first-name" ).value;
-	var lastName = document.getElementById("txt-last-name").value;
+	var lastName = document.getElementById("txt-last-name").value; 
 	var email = document.getElementById("txt-email").value;
 	var password = document.getElementById("txt-password").value;
 	var address = document.getElementById("txt-address").value;
