@@ -1,16 +1,57 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Deliver IT - Order Notification</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/themes/1/conf-room1.min.css" rel="stylesheet" />
-    <link href="css/themes/1/jquery.mobile.icons.min.css" rel="stylesheet" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="css/jquery.mobile.squareui.css" />
-  <script src="js/jquery.js"></script>
-<script type="text/javascript" src="js/cordova-1.5.0.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script>
+$(document).on('pageinit', '#demo-page', function(){      
+    var url = 'http://api.themoviedb.org/3/',
+        mode = 'search/movie?query=',
+        movieName = '&query='+encodeURI('Superman'),        
+        key = '&api_key=470fd2ec8853e25d2f8d86f685d2270e';        
+    
+    $.ajax({
+        url: url + mode + key + movieName ,
+        dataType: "jsonp",
+        async: true,
+        success: function (result) {
+            ajax.parseJSONP(result);
+        },
+        error: function (request,error) {
+            alert('Network error has occurred please try again!');
+        }
+    });         
+});
+
+$(document).on('pagebeforeshow', '#headline', function(){      
+    $('#movie-data').empty();
+    $.each(movieInfo.result, function(i, row) {
+        if(row.id == movieInfo.id) {
+            $('#movie-data').append('<li><img src="http://d3gtl9l2a4fn1j.cloudfront.net/t/p/w185'+row.poster_path+'"></li>');
+            $('#movie-data').append('<li>Title: '+row.original_title+'</li>');
+            $('#movie-data').append('<li>Release date'+row.release_date+'</li>');
+            $('#movie-data').append('<li>Popularity : '+row.popularity+'</li>');   
+            $('#movie-data').append('<li>Popularity : '+row.vote_average+'</li>');             
+            $('#movie-data').listview('refresh');            
+        }
+    });    
+});
+
+$(document).on('click', '#list li a', function(){  
+    movieInfo.id = $(this).attr('data-id');
+    $.mobile.changePage( "#headline", { transition: "slide", changeHash: false });
+});
+
+var movieInfo = {
+    id : null,
+    result : null
+}
+
+var ajax = {  
+    parseJSONP:function(result){  
+        movieInfo.result = result.results;
+        $.each(result.results, function(i, row) {
+            console.log(JSON.stringify(row));
+            $('#list').append('<li><a href="" data-id="' + row.id + '"><h3>' + row.title + '</h3><p>' + row.vote_average + '/10</p></a></li>');
+        });
+        $('#list').listview('refresh');
+    }
+}
+
 $( document ).on( "pagecreate", "#demo-page", function() {
     // Swipe to remove list item
     $( document ).on( "swipeleft swiperight", "#list li", function( event ) {
@@ -71,58 +112,3 @@ $( document ).on( "pagecreate", "#demo-page", function() {
         });
     }
 });
-</script>
-
-</head>
-
-<body>
-    <div data-role="page" id="demo-page" data-title="Inbox"  data-url="demo-page" >
-        <div data-role="header" role="banner" >
-            <h1>Deliver IT</h1>
-        </div><!-- /header -->
-        <div role="main" class="ui-content">
-            <h3>New Order has Arrived</h3>
-<ul id="list" class="touch" data-role="listview" data-icon="false" data-split-icon="check">
-            <li>
-                <a href="getOrders.html">
-                    <h3>Little Piza</h3>
-                    <p class="topic"><strong>Pizza delivery</strong></p>
-                    <p>Location: 5000 Forbes Avenue Pittsburgh </p>
-                    <p class="ui-li-aside"><strong>EDT: </strong>10mins</p>
-                </a>
-                <a href="#" class="delete">Delete</a>
-            </li>
-            <li>
-                <a href="#demo-mail">
-                    <h3>Tamarind</h3>
-                    <p class="topic"><strong>Food delivery: #8347</strong></p>
-                    <p>Location: 105 South Craig Pittsburgh</p>
-                    <p class="ui-li-aside"><strong>EDT</strong>25mins</p>
-                </a>
-                <a href="#" class="delete">Delete</a>
-            </li>
-            <li>
-                <a href="#demo-mail">
-                    <h3>Little Asia</h3>
-                    <p class="topic"><strong>Chinese Food Delivery #384</strong></p>
-                    <p>Location: 5000 Forbes Avenue Pittsburgh</p>
-                    <p class="ui-li-aside"><strong>3:24</strong>PM</p>
-                </a>
-                <a href="#" class="delete">Delete</a>
-            </li>
-			</ul>
-        </div><!-- /content -->
-		<div id="confirm" class="ui-content" data-role="popup" data-theme="a">
-        <p id="question">Are you sure you want to delete:</p>
-        <div class="ui-grid-a">
-            <div class="ui-block-a">
-                <a id="yes" class="ui-btn ui-corner-all ui-mini ui-btn-a" data-rel="back">Yes</a>
-            </div>
-            <div class="ui-block-b">
-                <a id="cancel" class="ui-btn ui-corner-all ui-mini ui-btn-a" data-rel="back">Cancel</a>
-            </div>
-        </div>
-    </div><!-- /popup -->
-    </div><!-- /page -->
-</body>
-</html>

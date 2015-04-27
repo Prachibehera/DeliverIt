@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Deliver IT - Order Notification</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/themes/1/conf-room1.min.css" rel="stylesheet" />
+    <link href="css/themes/1/jquery.mobile.icons.min.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/jquery.mobile.squareui.css" />
+  <script src="js/jquery.js"></script>
+<script type="text/javascript" src="js/cordova-1.5.0.js"></script>
+<script type="text/javascript" src="js/agentnotif.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtTcw1C9SfDbgy2aKfOt_5N8m2Ltpqdu8&sensor=false""></script>
+
+<script type="text/javascript" src="js/gmap.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
+</head>
+
+<body>
+    <div data-role="page" id="demo-page" data-title="Notification " >
+        <div data-role="header" role="banner" >
+            <h1>Deliver IT</h1>
+        </div><!-- /header -->
+		
+        <div role="content" class="ui-content">
+		<div class="example-wrapper" data-iscroll>
+			<ul id="list" class="touch" data-role="listview" data-icon="false" data-split-icon="check">
+            <li>
+                <a href="getOrders.html">
+                    <h3>Little Piza</h3>
+                    <p class="topic"><strong>Pizza delivery</strong></p>
+                    <p>Location: 5000 Forbes Avenue Pittsburgh </p>
+                    <p class="ui-li-aside"><strong>EDT: </strong>10mins</p>
+                </a>
+                <a href="#" class="delete">Delete</a>
+            </li>
+            <li>
+                <a href="#demo-mail">
+                    <h3>Tamarind</h3>
+                    <p class="topic"><strong>Food delivery: #8347</strong></p>
+                    <p>Location: 105 South Craig Pittsburgh</p>
+                    <p class="ui-li-aside"><strong>EDT</strong>25mins</p>
+                </a>
+                <a href="#" class="delete">Delete</a>
+            </li>
+			</ul>
+			</div>
+        </div><!-- /content -->
+		<div id="confirm" class="ui-content" data-role="popup" data-theme="a">
+        <p id="question">Are you sure you want to delete:</p>
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <a id="yes" class="ui-btn ui-corner-all ui-mini ui-btn-a" data-rel="back">Yes</a>
+            </div>
+            <div class="ui-block-b">
+                <a id="cancel" class="ui-btn ui-corner-all ui-mini ui-btn-a" data-rel="back">Cancel</a>
+            </div>
+        </div>
+    </div><!-- /popup -->
+	    <div data-theme="a" data-role="footer">
+        <h1>Copyright 2013</h1>
+    </div> 
+    </div><!-- /page -->
+	
+	<div data-role="page" id="headline" onload="initialize()">
+    <div data-theme="a" data-role="header">
+        <a href="#demo-page" class="ui-btn-left" data-transition="slide" data-direction="reverse">Back</a>                        
+        <h3>
+            Movie Info
+        </h3>
+    </div>     
+    <div role="main" class="ui-content" id="map-canvas" style="width:100%;height:100%;padding:10em">
+        <!-- map loads here... -->
+    </div>
+	<ul data-role="listview" data-editable="true" data-editable-type="complex" data-editable-form="editing-form" data-title="Orders" data-empty-title="No Orders">
+  <li>
+    <a id="directions_panel" >
+      <h3>Order #2356:</h3>
+      <p><em>Restaurant:</em> <strong>Heinz Cafe</strong></p>
+      <p><em>Location:</em> <strong>North Craig Street</strong></p>
+	  <p><em>Pickup:</em> <strong>ETA 10mins</strong></p>
+    </a>
+  </li>
+    <li id = "total">
+  </li>
+</ul>
+	
+    <div data-role="content">
+        <ul data-role="listview"  id="movie-data" data-theme="a">
+            
+        </ul>
+    </div>
+	
+</div>    
+
+</body>
+</html>
