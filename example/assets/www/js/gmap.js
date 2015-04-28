@@ -1,8 +1,10 @@
   var directionDisplay;
   var directionsService = new google.maps.DirectionsService();
   var map;
+  var cust_loc;
 $(document).on('pageinit', '#headline', function(){ 
-    directionsDisplay = new google.maps.DirectionsRenderer({polylineOptions: { strokeColor: '#5cb85c',strokeOpacity: 0.7, strokeWeight: 5 } });
+	cust_loc = $("#order-data").children().slice(1,2).text().slice(9);
+   directionsDisplay = new google.maps.DirectionsRenderer({polylineOptions: { strokeColor: '#5cb85c',strokeOpacity: 0.7, strokeWeight: 5 } });
     var chicago = new google.maps.LatLng(41.850033, -87.6500523);
 	
     var myOptions = {
@@ -17,13 +19,13 @@ $(document).on('pageinit', '#headline', function(){
   });
   
   function calcRoute() {
-
+	 //alert(localStorage.getItem("lastname"));
     var request = {
         // from: Blackpool to: Preston to: Blackburn
         origin: "214 North Craig Street Pittsburgh", 
-        destination: "5000 Forbes Avenue Pittsburgh", 
+        destination: localStorage.getItem("cust_location"), 
         waypoints: [{
-          location: "664 Summerlea St, Pittsburgh, PA 15232",
+          location: localStorage.getItem("rest_location"),
           stopover:true}],
         optimizeWaypoints: true,
         travelMode: google.maps.DirectionsTravelMode.DRIVING
