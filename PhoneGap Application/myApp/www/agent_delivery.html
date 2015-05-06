@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Deliver IT- Sign In</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/themes/1/conf-room1.min.css" rel="stylesheet" />
+<link href="css/themes/1/jquery.mobile.icons.min.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css"
+	href="css/jquery.mobile.squareui.css" />
+<script src="js/jquery.js"></script>
+<script src="js/jquery.mobile-1.4.0.min.js"></script>
+</head>
+<body>
+<div data-role="page"> 
+         <div data-role="header" role="banner">
+            <h1>DeliverIT</h1>
+        </div><!-- /header -->
+  <div data-role="content">
+  <h3 >Delivery Confirmation</h3>
+  <a href="#popupLogin" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-icon="check" data-theme="a" data-transition="pop" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5">Enter confirmation</a>
+<div data-role="popup" id="popupMenu" data-theme="a">
+    <div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all" style="margin: 0 auto;">
+        <form>
+            <div style="padding:10px 20px;">
+              <h3>Enter Confirmation Code:</h3>
+              <label for="un" class="ui-hidden-accessible">Enter Confirmation Code:</label>
+              <input name="user" id="un" value="" placeholder="#code" data-theme="a" type="text">
+                            <button type="submit" data-theme="b" data-icon="check">Confirm!</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+  </div>
+  
+</div>
+</body></html>
