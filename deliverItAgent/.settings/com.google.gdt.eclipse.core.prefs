@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+jarsExcludedFromWebInfLib=C\:/Users/Falguni/Desktop/mysql-connector-java-5.1.17-bin.jar/mysql-connector-java-5.1.17-bin.jar
+warSrcDir=war
+warSrcDirIsOutput=true

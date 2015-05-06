@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Falguni/Desktop/mysql-connector-java-5.1.17-bin.jar/mysql-connector-java-5.1.17-bin.jar"/>
+	<classpathentry kind="lib" path="D:/CMU Course/MDT/ProjectCode/deliverItAgent-2015-04-27/deliverItAgent/war/WEB-INF/lib/org.json-20120521.jar"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+</classpath>
